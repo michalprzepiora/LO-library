@@ -7,9 +7,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-//        List<Book> list = new ArrayList<>();
-//        list.add(new Book(89,"Java","r martin", 123,false));
-//        list.add(new Book(11,"C++","xxx", 111,false));
+
 //
         BookRepository inFileRepo = new InFileRepository();
 ////
