@@ -5,6 +5,7 @@ import model.Book;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class InMemoryRepository implements BookRepository {
 
@@ -64,15 +65,15 @@ public class InMemoryRepository implements BookRepository {
         return result;
     }
 
-    public Book getById(int id){
-        Book result = null;
-        for (Book book : books) {
-            if (book.getId() == id){
-                result = book;
-                break;
-            }
-        }
-        return result;
+    public Optional<Book> getById(int id){
+//        Book result = null;
+//        for (Book book : books) {
+//            if (book.getId() == id){
+//                result = book;
+//                break;
+//            }
+//        }
+        return Optional.empty();
     }
 
     public void update(Book newbook){

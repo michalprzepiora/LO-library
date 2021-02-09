@@ -7,8 +7,8 @@ import lombok.*;
 @Data
 public class Person {
 
+    private int id;
     private String name;
-    private String surame;
-    private int pesel;
-    private String email;
+    private String surname;
+    private int phone;
 }

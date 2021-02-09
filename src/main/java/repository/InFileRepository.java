@@ -4,9 +4,8 @@ import model.Book;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class InFileRepository implements BookRepository {
@@ -64,30 +63,28 @@ public class InFileRepository implements BookRepository {
 
     @Override
     public List<Book> getByTitle(String title) throws IOException {
-        List<Book> o = new List<>() ;
-
+        List<Book> result = new ArrayList<>() ;
         for (Book book : getAll()) {
             if (book.getTitle().equals(title)) {
-                o.add(book);
-                return o;
+                result.add(book);
             }
         }
-        return null;
+        return result;
     }
 
 
     @Override
-    public Book getById(int id) throws IOException {
+    public Optional<Book> getById(int id) throws IOException {
         for (Book book : getAll()) {
             if (book.getId() == id) {
-                return book;
+                return Optional.of(book);
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     @Override
-    public void update(Book newbook) {
+    public void update(Book newBook) {
     }
 
     private String getCsvLine(Book book) {

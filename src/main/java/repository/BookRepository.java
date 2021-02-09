@@ -5,6 +5,7 @@ import model.Book;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 public interface BookRepository {
 
@@ -15,7 +16,7 @@ public interface BookRepository {
     List<Book> getAll() throws IOException;
     List<Book> getBooked() throws IOException;
     List<Book> getByTitle(String title) throws IOException;
-    Book getById(int id) throws IOException;
+    Optional<Book> getById(int id) throws IOException;
     void update(Book newbook);
 
 }
