@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class InFileRepository implements BookRepository {
+public class InFileBookRepository implements BookRepository {
     private final static String DATABASE_FILENAME = "database.csv";
 
 
