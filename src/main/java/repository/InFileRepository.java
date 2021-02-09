@@ -4,6 +4,7 @@ import model.Book;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -62,9 +63,18 @@ public class InFileRepository implements BookRepository {
     }
 
     @Override
-    public List<Book> getByTitle(String title) {
+    public List<Book> getByTitle(String title) throws IOException {
+        List<Book> o = new List<>() ;
+
+        for (Book book : getAll()) {
+            if (book.getTitle().equals(title)) {
+                o.add(book);
+                return o;
+            }
+        }
         return null;
     }
+
 
     @Override
     public Book getById(int id) throws IOException {
