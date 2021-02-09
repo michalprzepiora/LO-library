@@ -13,7 +13,7 @@ public interface BookRepository {
     void remove(Book book);
     void remove(int id) throws IOException;
     List<Book> getAll() throws IOException;
-    List<Book> getBooked();
+    List<Book> getBooked() throws IOException;
     List<Book> getByTitle(String title);
     Book getById(int id) throws IOException;
     void update(Book newbook);

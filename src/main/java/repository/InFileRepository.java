@@ -51,8 +51,14 @@ public class InFileRepository implements BookRepository {
     }
 
     @Override
-    public List<Book> getBooked() {
-        return null;
+    public List<Book> getBooked() throws IOException {
+        List<Book> result = new ArrayList<>();
+        for (Book book : getAll()){
+            if(book.isBooked()){
+                result.add(book);
+            }
+        }
+        return result;
     }
 
     @Override
