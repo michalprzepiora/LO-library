@@ -2,51 +2,107 @@ package repository;
 
 import model.Book;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class InFileRepository implements BookRepository {
-    List<Book> books;
+    private final static String DATABASE_FILENAME = "database.csv";
 
-    public InFileRepository() {
-        //todo
-        // stworzyc plik jezeli niema lub odczytac
-        // zdekodowac i zapisac do listy <Book>
-        //dodac do books
 
-        books = new ArrayList<>();
+    @Override
+    public void add(Book book) throws IOException {
+        PrintWriter writer = new PrintWriter(new FileWriter(DATABASE_FILENAME, true));
+        writer.println(getCsvLine(book));
+        writer.close();
     }
 
-    public void add(Book book) {
-        //todo
-        books.add(book);
+    @Override
+    public void add(List<Book> books) throws IOException {
+        for (Book book : books) {
+            add(book);
+        }
     }
 
+    @Override
     public void remove(Book book) {
-        books.remove(book);
+
     }
 
-    public List<Book> getAll() {
-        return new ArrayList<>(books);
+    @Override
+    public void remove(int id) throws IOException {
+        List<Book> allBooks = getAll();
+        List<Book> result = allBooks.stream().filter(book -> book.getId()!=id).collect(Collectors.toList());
+        overrideAllBooks(result);
     }
 
+    @Override
+    public List<Book> getAll() throws IOException {
+        List<Book> bookList = new ArrayList<>();
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("database.csv"));
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            bookList.add(getBookFromLine(line));
+        }
+        bufferedReader.close();
+        return bookList;
+    }
+
+    @Override
     public List<Book> getBooked() {
-        List<Book> result = new ArrayList<>();
-        for (Book book : books) {
-            if (book.isBooked()) {
-                result.add(book);
-            }
-        }
-        return result;
+        return null;
     }
 
+    @Override
     public List<Book> getByTitle(String title) {
-        List<Book> result = new ArrayList<>();
-        for (Book book : books) {
-            if (book.getTitle().equals(title)) {
-                result.add(book);
+        return null;
+    }
+
+    @Override
+    public Book getById(int id) throws IOException {
+        for (Book book : getAll()) {
+            if (book.getId() == id) {
+                return book;
             }
         }
-        return result;
+        return null;
+    }
+
+    @Override
+    public void update(Book newbook) {
+    }
+
+    private String getCsvLine(Book book) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(book.getId());
+        builder.append(",");
+        builder.append(book.getTitle());
+        builder.append(",");
+        builder.append(book.getAuthor());
+        builder.append(",");
+        builder.append(book.getPages());
+        builder.append(",");
+        builder.append(book.isBooked());
+        return builder.toString();
+    }
+
+    private Book getBookFromLine(String line) {
+        String[] elements = line.split(",");
+        int id = Integer.parseInt(elements[0]);
+        String title = elements[1];
+        String author = elements[2];
+        int pages = Integer.parseInt(elements[3]);
+        boolean isBooked = Boolean.parseBoolean(elements[4]);
+        return new Book(id, title, author, pages, isBooked);
+    }
+
+    private void overrideAllBooks(List<Book> books) throws IOException {
+        PrintWriter writer = new PrintWriter(new FileWriter(DATABASE_FILENAME, false));
+        for (Book book : books) {
+            writer.println(getCsvLine(book));
+        }
+        writer.close();
     }
 }

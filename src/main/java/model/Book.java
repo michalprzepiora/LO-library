@@ -3,15 +3,23 @@ package model;
 import java.util.Objects;
 
 public class Book {
-    String title;
-    String author;
-    int pages;
-    boolean isBooked = false;
 
-    public Book(String title, String author, int pages) {
+    private int id;
+    private String title;
+    private String author;
+    private int pages;
+    private boolean isBooked = false;
+
+    public Book(int id, String title, String author, int pages, boolean isBooked) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.pages = pages;
+        this.isBooked = isBooked;
+    }
+
+    public Book(){
+
     }
 
     public boolean isBooked() {
@@ -46,15 +54,15 @@ public class Book {
         this.pages = pages;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return pages == book.pages &&
-                Objects.equals(title, book.title) &&
-                Objects.equals(author, book.author);
+    public int getId(){
+        return id;
     }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+
 
     @Override
     public int hashCode() {
@@ -67,8 +75,7 @@ public class Book {
                 "title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", pages=" + pages +
-                "}\n";
+                ", id=" + id +
+                '}';
     }
-
-
 }
