@@ -3,12 +3,11 @@ package repository;
 import model.Book;
 import model.Person;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class InFilePersonRepository implements PersonRepository{
     @Override
@@ -18,7 +17,9 @@ public class InFilePersonRepository implements PersonRepository{
 
     @Override
     public void remove(int id) throws IOException {
-
+        List<Person> allPerson = getAll();
+        List<Person> result = allPerson.stream().filter(person -> person.getId()!=id).collect(Collectors.toList());
+        overrideAllPersons(result);
     }
 
     @Override
@@ -49,6 +50,24 @@ public class InFilePersonRepository implements PersonRepository{
         String surname = elements[2];
         int phone = Integer.parseInt(elements[3]);
         return new Person(id, name, surname, phone);
+    }
+    private String getCsvLine(Person person){
+        StringBuilder builder = new StringBuilder();
+        builder.append(person.getId());
+        builder.append(",");
+        builder.append(person.getName());
+        builder.append(",");
+        builder.append(person.getSurname());
+        builder.append(",");
+        builder.append(person.getPhone());
+        return builder.toString();
+    }
+    private void overrideAllPersons(List<Person> persons) throws IOException {
+        PrintWriter printWriter = new PrintWriter(new FileWriter("person.csv",false));
+        for (Person person:persons){
+            printWriter.println(getCsvLine(person));
+        }
+        printWriter.close();
     }
 
 
