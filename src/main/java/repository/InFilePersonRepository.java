@@ -1,6 +1,5 @@
 package repository;
 
-import model.Book;
 import model.Person;
 
 import java.io.*;
@@ -10,9 +9,13 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class InFilePersonRepository implements PersonRepository{
+    private final static String PERSON_DATABASE_FILENAME = "person.csv";
+
     @Override
     public void add(Person person) throws IOException {
-
+        PrintWriter writer = new PrintWriter(new FileWriter(PERSON_DATABASE_FILENAME, true));
+        writer.println(getCsvLine(person));
+        writer.close();
     }
 
     @Override
