@@ -14,4 +14,8 @@ public class Person {
 
     public Person(int id, String name, String surname, int phone) {
     }
+
+    public int getid() {
+        return id;
+    }
 }

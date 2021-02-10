@@ -41,6 +41,11 @@ public class InFilePersonRepository implements PersonRepository{
 
     @Override
     public Optional<Person> getById(int id) throws IOException {
+        for (Person person :getAll()){
+            if (person.getid()==id){
+                return Optional.of(person);
+            }
+        }
         return Optional.empty();
     }
     private Person getPersonFromLine(String line) {
