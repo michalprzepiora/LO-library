@@ -21,7 +21,7 @@ public class InFilePersonRepository implements PersonRepository{
     @Override
     public void remove(int id) throws IOException {
         List<Person> allPerson = getAll();
-        List<Person> result = allPerson.stream().filter(person -> person.getId()!=id).collect(Collectors.toList());
+        List<Person> result = allPerson.stream().filter(person -> person.getid()!=id).collect(Collectors.toList());
         overrideAllPersons(result);
     }
 
@@ -66,7 +66,7 @@ public class InFilePersonRepository implements PersonRepository{
     }
     private String getCsvLine(Person person){
         StringBuilder builder = new StringBuilder();
-        builder.append(person.getId());
+        builder.append(person.getid());
         builder.append(",");
         builder.append(person.getName());
         builder.append(",");
