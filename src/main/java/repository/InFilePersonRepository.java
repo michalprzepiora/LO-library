@@ -3,10 +3,15 @@ package repository;
 import model.Person;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+// Poprawic zapis do pliku żeby zapisywał date urodzenia
+
+// zaimplementować metode isAdult()
 
 public class InFilePersonRepository implements PersonRepository{
     private final static String PERSON_DATABASE_FILENAME = "person.csv";

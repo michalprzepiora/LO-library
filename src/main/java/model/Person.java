@@ -2,6 +2,9 @@ package model;
 
 import lombok.*;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -11,9 +14,9 @@ public class Person {
     private String name;
     private String surname;
     private int phone;
-    private String adDate;
+    private  LocalDate birthDate;
 
-    public Person(int id, String name, String surname, int phone,String adDate) {
+    public Person(int id, String name, String surname, int phone,String adDate, LocalDate birthDate) {
     }
 
     public int getid() {
@@ -23,4 +26,7 @@ public class Person {
         return phone;
     }
 
+    public boolean isAdult(){
+        return true;
+    }
 }

@@ -11,16 +11,9 @@ public class Main {
 
 
         BookRepository inFileRepo = new InFileBookRepository();
+        Book book = new Book(455, "Dziady 4", "Mickiewicz", 654, false);
+        inFileRepo.add(book);
 
-        Optional<Book> optionalBook = inFileRepo.getById(8);
-
-        if (optionalBook.isPresent()) {
-            System.out.println(optionalBook.get());
-        } else {
-            System.out.println("Brak takiego ID.");
-        }
-        Optional.ofNullable(null);
+        System.out.println(inFileRepo.getAll());
     }
-
-
 }
