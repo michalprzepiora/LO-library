@@ -73,6 +73,10 @@ public class InFileBookRepository implements BookRepository {
         return result;
     }
 
+    public List<Book> getByTitleAdv(String title){
+        return null;
+    }
+
 
     @Override
     public Optional<Book> getById(int id) throws IOException {
