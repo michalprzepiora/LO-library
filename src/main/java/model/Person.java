@@ -18,4 +18,8 @@ public class Person {
     public int getid() {
         return id;
     }
+    public int getPhone(){
+        return phone;
+    }
+
 }

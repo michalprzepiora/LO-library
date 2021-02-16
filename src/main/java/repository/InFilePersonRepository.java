@@ -39,6 +39,11 @@ public class InFilePersonRepository implements PersonRepository{
 
     @Override
     public Optional<Person> getByPhone(int number) throws IOException {
+        for (Person person : getAll()) {
+            if(person.getPhone()==number){
+                return Optional.of(person);
+            }
+        }
         return Optional.empty();
     }
 
