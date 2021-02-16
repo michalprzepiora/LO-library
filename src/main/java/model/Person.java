@@ -20,7 +20,6 @@ public class Person {
     }
     public int getPhone(){
         return phone;
-
     }
 
 }
