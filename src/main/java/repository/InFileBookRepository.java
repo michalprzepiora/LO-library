@@ -35,7 +35,7 @@ public class InFileBookRepository implements BookRepository {
     @Override
     public void remove(int id) throws IOException {
         List<Book> allBooks = getAll();
-        List<Book> result = allBooks.stream().filter(book -> book.getId()!=id).collect(Collectors.toList());
+        List<Book> result = allBooks.stream().filter(book -> book.getId() != id).collect(Collectors.toList());
         overrideAllBooks(result);
     }
 
@@ -54,8 +54,8 @@ public class InFileBookRepository implements BookRepository {
     @Override
     public List<Book> getBooked() throws IOException {
         List<Book> result = new ArrayList<>();
-        for (Book book : getAll()){
-            if(book.isBooked()){
+        for (Book book : getAll()) {
+            if (book.isBooked()) {
                 result.add(book);
             }
         }
@@ -64,7 +64,7 @@ public class InFileBookRepository implements BookRepository {
 
     @Override
     public List<Book> getByTitle(String title) throws IOException {
-        List<Book> result = new ArrayList<>() ;
+        List<Book> result = new ArrayList<>();
         for (Book book : getAll()) {
             if (book.getTitle().equals(title)) {
                 result.add(book);
@@ -73,8 +73,16 @@ public class InFileBookRepository implements BookRepository {
         return result;
     }
 
-    public List<Book> getByTitleAdv(String title){
-        return null;
+    public List<Book> getByTitleAdv(String title) throws IOException {
+        String titleLowerCase = title.toLowerCase();
+        ArrayList<Book> bookList = new ArrayList<>();
+        for (Book book : getAll()) {
+            String lowercase = book.getTitle().toLowerCase();
+            if (lowercase.contains(titleLowerCase)) {
+                bookList.add(book);
+            }
+        }
+        return bookList;
     }
 
 
