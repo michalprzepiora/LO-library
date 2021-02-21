@@ -62,7 +62,8 @@ public class InFilePersonRepository implements PersonRepository{
         String name = elements[1];
         String surname = elements[2];
         int phone = Integer.parseInt(elements[3]);
-        return new Person(id, name, surname, phone);
+        String addata=elements[4];
+        return new Person(id, name, surname, phone,addata);
     }
     private String getCsvLine(Person person){
         StringBuilder builder = new StringBuilder();
@@ -73,6 +74,8 @@ public class InFilePersonRepository implements PersonRepository{
         builder.append(person.getSurname());
         builder.append(",");
         builder.append(person.getPhone());
+        builder.append(",");
+        builder.append(person.getAdDate());
         return builder.toString();
     }
     private void overrideAllPersons(List<Person> persons) throws IOException {

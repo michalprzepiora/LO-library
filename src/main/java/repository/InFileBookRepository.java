@@ -111,6 +111,7 @@ public class InFileBookRepository implements BookRepository {
         builder.append(book.getPages());
         builder.append(",");
         builder.append(book.isBooked());
+
         return builder.toString();
     }
 

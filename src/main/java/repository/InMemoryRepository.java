@@ -1,14 +1,16 @@
 package repository;
 
 import model.Book;
+import model.Person;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class InMemoryRepository implements BookRepository {
-
+    private final static String MEMORY = "memory.txt";
 
     private List<Book> books;
 
@@ -29,6 +31,9 @@ public class InMemoryRepository implements BookRepository {
 
     @Override
     public void add(List<Book> books) throws IOException {
+        for(Book bk:getAll()){
+            add(bk);
+        }
 
     }
 
@@ -38,7 +43,7 @@ public class InMemoryRepository implements BookRepository {
 
     @Override
     public void remove(int id) {
-
+        List<Book> result = getAll().stream().filter(bog -> bog.getId()!=id).collect(Collectors.toList());
     }
 
     public List<Book> getAll() {
