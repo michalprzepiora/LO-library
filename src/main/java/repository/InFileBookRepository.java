@@ -111,13 +111,6 @@ public class InFileBookRepository implements BookRepository {
         builder.append(book.getPages());
         builder.append(",");
         builder.append(book.isBooked());
-        builder.append(",");
-        builder.append(book.getAddDate().getYear());
-        builder.append(",");
-        builder.append(book.getAddDate());
-        builder.append(",");
-        builder.append(book.getAddDate().getDayOfMonth());
-
         return builder.toString();
     }
 
