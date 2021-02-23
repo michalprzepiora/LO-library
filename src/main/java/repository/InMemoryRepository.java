@@ -71,13 +71,13 @@ public class InMemoryRepository implements BookRepository {
     }
 
     public Optional<Book> getById(int id){
-//        Book result = null;
-//        for (Book book : books) {
-//            if (book.getId() == id){
-//                result = book;
-//                break;
-//            }
-//        }
+       Book result = null;
+       for (Book book : books) {
+           if (book.getId() == id){
+               result = book;
+               break;
+           }
+       }
         return Optional.empty();
     }
 
