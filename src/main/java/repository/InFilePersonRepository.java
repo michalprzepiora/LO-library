@@ -67,7 +67,9 @@ public class InFilePersonRepository implements PersonRepository{
         String name = elements[1];
         String surname = elements[2];
         int phone = Integer.parseInt(elements[3]);
-        return new Person(id, name, surname, phone);
+        String addDate = elements[4];
+        LocalDate birthDate = LocalDate.parse(elements[5]);
+        return new Person(id, name, surname, phone, addDate, birthDate);
     }
     private String getCsvLine(Person person){
         StringBuilder builder = new StringBuilder();
@@ -78,6 +80,10 @@ public class InFilePersonRepository implements PersonRepository{
         builder.append(person.getSurname());
         builder.append(",");
         builder.append(person.getPhone());
+        builder.append(",");
+        builder.append(person.getAddDate());
+        builder.append(",");
+        builder.append(person.getBirthDate());
         return builder.toString();
     }
     private void overrideAllPersons(List<Person> persons) throws IOException {
