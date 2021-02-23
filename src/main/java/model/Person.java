@@ -13,6 +13,9 @@ public class Person {
     private int phone;
     private String adDate;
 
+    public Person(int id, String name, String surname, int phone,String adDate) {
+    }
+
     public int getid() {
         return id;
     }

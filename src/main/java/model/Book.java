@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Book {
@@ -9,6 +10,7 @@ public class Book {
     private String author;
     private int pages;
     private boolean isBooked = false;
+    private LocalDate addDate;
 
     public Book(int id, String title, String author, int pages, boolean isBooked) {
         this.id = id;
@@ -16,6 +18,7 @@ public class Book {
         this.author = author;
         this.pages = pages;
         this.isBooked = isBooked;
+        this.addDate = LocalDate.now();
     }
 
     public Book(){
@@ -61,8 +64,13 @@ public class Book {
         this.id = id;
     }
 
+    public LocalDate getAddDate() {
+        return addDate;
+    }
 
-
+    public void setAddDate(LocalDate addDate) {
+        this.addDate = addDate;
+    }
 
     @Override
     public int hashCode() {
@@ -72,10 +80,12 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", pages=" + pages +
-                ", id=" + id +
+                ", isBooked=" + isBooked +
+                ", addDate=" + addDate +
                 '}';
     }
 }
