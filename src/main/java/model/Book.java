@@ -1,6 +1,14 @@
 package model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class Book {
     private String title;
@@ -10,12 +18,4 @@ public class Book {
     private int id;
     private LocalDate addDate;
 
-    public Book(String title, String author, String publisher, int pages, int id, LocalDate addDate) {
-        this.title = title;
-        this.author = author;
-        this.publisher = publisher;
-        this.pages = pages;
-        this.id = id;
-        this.addDate = addDate;
-    }
 }
