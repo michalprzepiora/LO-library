@@ -1,15 +1,12 @@
+package model;
 
-
-package repository;
-
-
-
-public class Person implements PersonInterface {
+public class Person {
     int id;
     String name;
     String surname;
     String eMail;
     String number;
+
     public Person(String name, String surname, String eMail, String number) {
         this.name = name;
         this.surname = surname;
