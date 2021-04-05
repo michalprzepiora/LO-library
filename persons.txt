@@ -1,0 +1,1 @@
+Person{id=0, name='paweł', surname='kupis', eMail='pablopl@o2.pl', number='997'}Person{id=0, name='gabryś', surname='kggg', eMail='pabahh@interia.eu', number='2137'}

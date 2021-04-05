@@ -1,6 +1,8 @@
 package model;
 
-public class Person {
+import java.io.Serializable;
+
+public class Person implements Serializable {
     int id;
     String name;
     String surname;
@@ -38,4 +40,14 @@ public class Person {
 
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", eMail='" + eMail + '\'' +
+                ", number='" + number + '\'' +
+                '}';
+    }
 }
