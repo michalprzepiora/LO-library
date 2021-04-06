@@ -1,10 +1,11 @@
 package model;
 
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 
-public class Book {
+public class Book implements Serializable {
     private String title;
     private String author;
     private int id;
@@ -40,5 +41,16 @@ public class Book {
 
     public LocalDate getAddDate() {
         return addDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", id=" + id +
+                ", pages=" + pages +
+                ", addDate=" + addDate +
+                '}';
     }
 }
