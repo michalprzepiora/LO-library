@@ -48,11 +48,11 @@ public class Book {
     public boolean isbooked(){
 
         if (rent.getPerson()==null &&rent.getData()==null && rent.getTermin()==null){
-            System.out.println("pole jest puste");
+
             return false;
         }
         else{
-            System.out.println("poje NIE JEST PUSTE");
+
             return true;
         }
     }
