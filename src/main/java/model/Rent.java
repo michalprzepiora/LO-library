@@ -9,9 +9,9 @@ public class Rent {
     Person person;
     int readtime=14;
     LocalDate data;
-    Duration termin = Duration.between(data.atStartOfDay(), LocalDate.now().atStartOfDay());
+    LocalDate termin ;
 
-    public Rent(Person person, LocalDate data, Duration termin) {
+    public Rent(Person person, LocalDate data, LocalDate termin ) {
         this.person = person;
         this.data = data.plusDays(readtime);
         this.termin = termin;
@@ -33,11 +33,11 @@ public class Rent {
         this.data = data;
     }
 
-    public Duration getTermin() {
+    public LocalDate getTermin() {
         return termin;
     }
 
-    public void setTermin(Duration termin) {
+    public void setTermin(LocalDate termin) {
         this.termin = termin;
     }
     public void clear(){
